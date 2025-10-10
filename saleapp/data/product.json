@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "Laptop HP 15 fd0303TU - A2NL4PA (i3 1315U, 8GB, 512GB, Full HD, Win11)",
+    "image": "https://cdn.tgdd.vn/Products/Images/44/326050/Slider/vi-vn-hp-15-fd0303tu-i3-a2nl4pa-slider-1.jpg",
+    "price": 8900000,
+    "cate_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Laptop Asus Vivobook Go 15 E1504FA - NJ776W (R5 7520U, 16GB, 512GB, Full HD, Win11)",
+    "image": "https://cdn.tgdd.vn/Products/Images/44/311178/Slider/vi-vn-asus-vivobook-go-15-e1504fa-r5-nj776w-slider-1.jpg",
+    "price": 8700000,
+    "cate_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Laptop MSI Gaming Katana 15 B13UDXK - 2077VN (i7 13620H, 16GB, 1TB, RTX 3050 6GB, Full HD 144Hz, Win11)",
+    "image": "https://cdn.tgdd.vn/Products/Images/44/326122/Slider/vi-vn-msi-katana-15-b13udxk-i7-2077vn-thumbvideo.jpg",
+    "price": 23700000,
+    "cate_id": 1
+  },
+  {
+    "id": 4,
+    "name": "iPhone 17 Pro Max 256GB",
+    "image": "https://24hstore.vn/images/products/2025/09/11/large/iphone-17-pro-max-cam-nb_1757564962.jpg",
+    "price": 36500000,
+    "cate_id": 2
+  },
+  {
+    "id": 5,
+    "name": "Galaxy S25 Ultra",
+    "image": "https://images.samsung.com/vn/smartphones/galaxy-s25-ultra/buy/kv_global_PC_vn.jpg?imbypass=true",
+    "price": 36800000,
+    "cate_id": 2
+  },
+  {
+    "id": 6,
+    "name": "iPhone 15 Chính Hãng",
+    "image": "https://apple.ngocnguyen.vn/cdn/images/202409/goods_img/iphone-15-chinh-hang--like-new-99-P15594-1726994922150.png",
+    "price": 13200000,
+    "cate_id": 2
+  },
+  {
+    "id": 7,
+    "name": "Surface Pro 9 Core i7 1255U / 13 inch QHD (Model 2022)",
+    "image": "https://ngocnguyen.vn/cdn/images/202501/goods_img/surface-pro-9-core-i7-1255u-13-inch-qhd-model-2022-G16201-1736475005654.png",
+    "price": 19400000,
+    "cate_id": 3
+  },
+  {
+    "id": 8,
+    "name": "iPad Pro 13-inch M4 2024 - 256Gb WiFi + 5G (Cellular)",
+    "image": "https://bizweb.dktcdn.net/100/444/581/products/1-9e5686a4-7601-4230-9c33-4910ab2ea38d-9e680aeb-1a75-4fea-b95f-b6da935c36a5-152606fb-ec13-4d8c-9c3c-0ecaf90b0908.png?v=1739681353063",
+    "price": 27200000,
+    "cate_id": 3
+  }
+]
