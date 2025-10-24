@@ -1,25 +1,38 @@
 import json
+from model import Category, Product
+from saleapp import app
 
 def load_category():
-    with open("data/category.json", encoding="utf-8") as f:
-        return json.load(f)
+    # with open("data/category.json", encoding="utf-8") as f:
+    #     return json.load(f)
+    return Category.query.all()
+
+
 
 def load_product(q=None, cate_id=None):
     with open("data/product.json", encoding="utf-8") as f:
         products = json.load(f)
 
         if q:
-            products = [p for p in products if p["name"].find(q)>=0]
+            products = [p for p in products if p["name"].find(q) >= 0]
 
         if cate_id:
-            products = [p for p in products if p["cate_id"].__eq__(int(cate_id)) ]
-
+            products = [p for p in products if p["cate_id"].__eq__(int(cate_id))]
 
         return products
 
 
+def get_product_by_id(id):
+    with open("data/product.json", encoding="utf-8") as f:
+        products = json.load(f)
+
+        for p in products:
+            if p["id"].__eq__(id):
+                return p
+
+    return None
 
 
-
-if __name__ =="__main__":
-    print(load_category())
+if __name__ == "__main__":
+    with app.app_context():
+        print(load_category())
