@@ -24,7 +24,7 @@ class User(Base, UserMixin):
     username = Column(String(150), unique=True, nullable=False)
     password = Column(String(150), nullable=False)
     avatar = Column(String(300), default="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F267964246571684904%2F&psig=AOvVaw3r4LksHPhuhSe2uBT-FFyE&ust=1762590904142000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOjQkffQ35ADFQAAAAAdAAAAABAE")
-    role = Column(Enum(UserEnum), nullable=False, default=UserEnum)
+    role = Column(Enum(UserEnum), nullable=False, default=UserEnum.USER)
 
 class Category(Base):
     products = relationship('Product', backref="category", lazy=True)

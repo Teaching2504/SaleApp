@@ -1,5 +1,6 @@
+import hashlib
 import json
-from models import Category, Product
+from models import Category, Product, User
 from saleapp import app
 
 def load_category():
@@ -37,6 +38,13 @@ def load_product(q=None, cate_id=None, page = None):
 
     return query.all()
 
+def auth_user(username, password):
+    password = str(hashlib.md5(password.encode('utf-8')).hexdigest())
+    return User.query.filter(User.username.__eq__(username) and User.password.__eq__(password)).first()
+
+def get_user_by_id(id):
+    return User.query.get(id)
+
 def count_product():
     return Product.query.count()
 
@@ -52,5 +60,7 @@ def get_product_by_id(id):
 
 
 if __name__ == "__main__":
+    # with app.app_context():
+    #     print(load_category())
     with app.app_context():
-        print(load_category())
+        print(auth_user(username="user", password="123"))
