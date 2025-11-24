@@ -1,7 +1,7 @@
 import json
 from itertools import product
 from datetime import datetime
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, Boolean, DateTime, Enum
+from sqlalchemy import Column, Integer, String, Float, ForeignKey, Boolean, DateTime, Enum, Text
 from sqlalchemy.orm import relationship
 from saleapp import db, app
 from flask_login import UserMixin
@@ -23,7 +23,7 @@ class Base(db.Model):
 class User(Base, UserMixin):
     username = Column(String(150), unique=True, nullable=False)
     password = Column(String(150), nullable=False)
-    avatar = Column(String(300), default="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F267964246571684904%2F&psig=AOvVaw3r4LksHPhuhSe2uBT-FFyE&ust=1762590904142000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOjQkffQ35ADFQAAAAAdAAAAABAE")
+    avatar = Column(String(300), default="http://weart.vn/wp-content/uploads/2025/06/anh-den-phan-anh-chieu-sau-noi-tam.jpg")
     role = Column(Enum(UserEnum), nullable=False, default=UserEnum.USER)
 
 class Category(Base):
@@ -34,7 +34,7 @@ class Product(Base):
     image = Column(String(500),default="https://24hstore.vn/images/products/2025/09/11/large/iphone-17-pro-max-cam-nb_1757564962.jpg")
     price = Column(Float, default=0.0)
     cate_id = Column(Integer, ForeignKey(Category.id), nullable=False)
-
+    description = Column(Text)
 
 if __name__ == "__main__":
     with app.app_context():
