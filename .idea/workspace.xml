@@ -4,18 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0c061bd3-812a-4043-a9b2-6e905fa49bc1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/saleapp/admin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saleapp/static/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/saleapp/templates/admin/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SaleApp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SaleApp.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="0c061bd3-812a-4043-a9b2-6e905fa49bc1" name="Changes" comment="update BTH4 21/11/2025">
+      <change afterPath="$PROJECT_DIR$/saleapp/templates/admin/starts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/saleapp/templates/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saleapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/saleapp/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saleapp/index.py" beforeDir="false" afterPath="$PROJECT_DIR$/saleapp/index.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saleapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/saleapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saleapp/templates/layout/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/saleapp/templates/layout/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/saleapp/templates/layout/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/saleapp/templates/layout/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saleapp/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/saleapp/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saleapp/templates/product-details.html" beforeDir="false" afterPath="$PROJECT_DIR$/saleapp/templates/product-details.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,6 +62,12 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\SaleApp\saleapp\templates" />
+      <recent name="C:\SaleApp\saleapp\templates\admin" />
+    </key>
+  </component>
   <component name="RunManager" selected="Python.index">
     <configuration name="index" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="SaleApp" />
@@ -131,6 +135,15 @@
       <option name="presentableId" value="Default" />
       <updated>1763705457936</updated>
     </task>
+    <task id="LOCAL-00001" summary="update BTH4 21/11/2025">
+      <option name="closed" value="true" />
+      <created>1764003104046</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1764003104046</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,15 +157,8 @@
       </map>
     </option>
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/saleapp/models.py</url>
-          <line>38</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update BTH4 21/11/2025" />
+    <option name="LAST_COMMIT_MESSAGE" value="update BTH4 21/11/2025" />
   </component>
 </project>

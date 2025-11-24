@@ -5,9 +5,10 @@ from sqlalchemy import Column, Integer, String, Float, ForeignKey, Boolean, Date
 from sqlalchemy.orm import relationship
 from saleapp import db, app
 from flask_login import UserMixin
+import enum
 from enum import Enum as RoleEnum
 
-class UserEnum(RoleEnum):
+class UserRole(enum.Enum):
     USER = 1
     ADMIN = 2
 
@@ -24,7 +25,7 @@ class User(Base, UserMixin):
     username = Column(String(150), unique=True, nullable=False)
     password = Column(String(150), nullable=False)
     avatar = Column(String(300), default="http://weart.vn/wp-content/uploads/2025/06/anh-den-phan-anh-chieu-sau-noi-tam.jpg")
-    role = Column(Enum(UserEnum), nullable=False, default=UserEnum.USER)
+    role = Column(Enum(UserRole), nullable=False, default=UserRole.USER)
 
 class Category(Base):
     products = relationship('Product', backref="category", lazy=True)

@@ -45,6 +45,11 @@ def login_my_user():
 def logout_my_user():
     logout_user()
     return redirect('/login')
+
+@app.route('/register')
+def register():
+    return render_template("register.html")
+
 @app.context_processor
 def common_attribute():
     return{

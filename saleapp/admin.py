@@ -1,13 +1,29 @@
-from flask_admin import Admin, AdminIndexView, expose
+from flask_admin import Admin, AdminIndexView, expose, BaseView
 from flask_admin.theme import Bootstrap4Theme
 from flask_admin.contrib.sqla import ModelView
-from flask_login import current_user
+from flask_login import current_user, logout_user
+from werkzeug.utils import redirect
 from saleapp import app, db
-from models import Category, Product
+from models import Category, Product, User, UserRole
+from wtforms import TextAreaField
+from wtforms.widgets import TextArea
 
+class AuthenticatedView(ModelView):
+    def is_accessible(self) -> bool:
+        return current_user.is_authenticated and current_user.role == UserRole.ADMIN
 
+class CKTextAreaWidget(TextArea):
+    def __call__(self, field, **kwargs):
+        if kwargs.get('class'):
+            kwargs['class'] += ' ckeditor'
+        else:
+            kwargs.setdefault('class', 'ckeditor')
+        return super(CKTextAreaWidget, self).__call__(field, **kwargs)
 
-class MyCategoryView(ModelView):
+class CKTextAreaField(TextAreaField):
+    widget = CKTextAreaWidget()
+
+class MyCategoryView(AuthenticatedView):
     column_list = ['name', 'products']
     column_searchable_list = ['name']
     column_filters = ['name']
@@ -16,8 +32,14 @@ class MyCategoryView(ModelView):
         "products":"Danh sách sản phẩm"
     }
 
-    def is_accessible(self) -> bool:
-        return current_user.is_authenticated
+class MyProductView(AuthenticatedView):
+    column_list = ['name', 'image', 'price', 'category', 'description']
+    can_export = True
+
+    extra_js = ['//cdn.ckeditor.com/4.6.0/standard/ckeditor.js']
+    form_overrides = {
+        'description': CKTextAreaField
+    }
 
 
 class MyAdminIndexView(AdminIndexView):
@@ -25,9 +47,24 @@ class MyAdminIndexView(AdminIndexView):
     def index(self) -> str:
         return self.render('admin/index.html')
 
+class MyAdminLogoutView(BaseView):
+    @expose('/')
+    def index(self) -> str:
+        logout_user()
+        return redirect('/admin')
+    def is_accessible(self) -> bool:
+        return current_user.is_authenticated
+
+class StartsView(BaseView):
+    @expose('/')
+    def index(self) -> str:
+        return self.render('admin/starts.html')
+
 admin = Admin(app=app, name='E=COMMERCE', theme=Bootstrap4Theme(), index_view=MyAdminIndexView() )
 
 admin.add_view(MyCategoryView(Category, db.session))
-admin.add_view(ModelView(Product, db.session))
+admin.add_view(MyProductView(Product, db.session))
+admin.add_view(StartsView("Thống kê"))
+admin.add_view(MyAdminLogoutView("Đăng xuất"))
 
 
