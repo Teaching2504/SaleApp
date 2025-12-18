@@ -1,7 +1,7 @@
 import hashlib
 import json
 from models import Category, Product, User
-from saleapp import app
+from saleapp import app, db
 
 def load_category():
     # with open("data/category.json", encoding="utf-8") as f:
@@ -41,6 +41,13 @@ def load_product(q=None, cate_id=None, page = None):
 def auth_user(username, password):
     password = str(hashlib.md5(password.encode('utf-8')).hexdigest())
     return User.query.filter(User.username.__eq__(username) and User.password.__eq__(password)).first()
+
+def add_user(name, username, password, avatar):
+    password = str(hashlib.md5(password.strip().encode('utf-8')).hexdigest())
+    u = User(name=name, username=username.strip(), password=password, avatar=avatar)
+    db.session.add(u)
+    db.session.commit()
+
 
 def get_user_by_id(id):
     return User.query.get(id)
