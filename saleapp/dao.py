@@ -1,7 +1,9 @@
 import hashlib
 import json
-from models import Category, Product, User
+from models import Category, Product, User,  Receipt, ReceiptDetail
 from saleapp import app, db
+from flask_login import current_user
+from sqlalchemy.sql import func
 
 def load_category():
     # with open("data/category.json", encoding="utf-8") as f:
@@ -48,6 +50,16 @@ def add_user(name, username, password, avatar):
     db.session.add(u)
     db.session.commit()
 
+def add_receipt(cart):
+    if cart:
+        r = Receipt(user=current_user)
+        db.session.add(r)
+
+        for p in cart.values():
+            d = ReceiptDetail(product_id=p["id"], receipt=r, unit_price=p["price"], quantity=p["quantity"])
+            db.session.add(d)
+        db.session.commit()
+
 
 def get_user_by_id(id):
     return User.query.get(id)
@@ -65,9 +77,15 @@ def get_product_by_id(id):
 
     return Product.query.get(id)
 
+def count_product_by_cate():
+    query = (db.session.query(Category.id, Category.name, func.count(Product.id))\
+             .join(Product, Product.cate_id.__eq__(Category.id), isouter=True)).group_by(Category.id)
+    print(query)
+
+    return query.all()
 
 if __name__ == "__main__":
     # with app.app_context():
     #     print(load_category())
     with app.app_context():
-        print(auth_user(username="user", password="123"))
+        print(count_product_by_cate())

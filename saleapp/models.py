@@ -26,6 +26,7 @@ class User(Base, UserMixin):
     password = Column(String(150), nullable=False)
     avatar = Column(String(300), default="http://weart.vn/wp-content/uploads/2025/06/anh-den-phan-anh-chieu-sau-noi-tam.jpg")
     role = Column(Enum(UserRole), nullable=False, default=UserRole.USER)
+    receipts = relationship('Receipt', backref='user', lazy=True)
 
 class Category(Base):
     products = relationship('Product', backref="category", lazy=True)
@@ -36,6 +37,23 @@ class Product(Base):
     price = Column(Float, default=0.0)
     cate_id = Column(Integer, ForeignKey(Category.id), nullable=False)
     description = Column(Text)
+    details = relationship('ReceiptDetail', backref='product', lazy=True)
+
+class Receipt(db.Model):
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    active = Column(Boolean, default=True)
+    created_date = Column(DateTime, default=datetime.now())
+    user_id = Column(Integer, ForeignKey(User.id), nullable=False)
+    details = relationship('ReceiptDetail', backref='receipt', lazy=True)
+
+class ReceiptDetail(db.Model):
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    active = Column(Boolean, default=True)
+    created_date = Column(DateTime, default=datetime.now())
+    product_id = Column(Integer, ForeignKey(Product.id), nullable=False)
+    receipt_id = Column(Integer, ForeignKey(Receipt.id), nullable=False)
+    unit_price = Column(Float, default=0.0)
+    quantity = Column(Integer, default=0)
 
 if __name__ == "__main__":
     with app.app_context():
@@ -54,12 +72,13 @@ if __name__ == "__main__":
         #
         #     for p in products:
         #         db.session.add(Product(**p))
-
-
-        import hashlib
-
-        u = User(name="User", username="user", password=str(hashlib.md5("123".encode("utf-8")).hexdigest()))
-
-        db.session.add(u)
-
+        #
+        #
+        # import hashlib
+        #
+        # u1 = User(name="User", username="user", password=str(hashlib.md5("123".encode("utf-8")).hexdigest()))
+        # u2 = User(name="Admin", username="admin", password=str(hashlib.md5("123".encode("utf-8")).hexdigest()), role=UserRole.ADMIN)
+        #
+        # db.session.add(u1)
+        # db.session.add(u2)
         db.session.commit()
